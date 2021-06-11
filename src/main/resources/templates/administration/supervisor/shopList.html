@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <link rel='stylesheet' type='text/css' media='screen' href='/css/shop_list.css'>
+    <title>매장목록</title>
+</head>
+<body>
+<a class="go_back" href="javascript:history.back(-1)">뒤로</a>
+<h3>[ 매장 목록 ]</h3>
+<table class="list">
+  <thead>
+    <tr>
+      <th>번호</th>
+      <th class="img">사진</th>
+      <th>가게명</th>
+      <th>입점일자</th>
+      <th>위치</th>
+      <th>권한</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="members : ${managerList}">
+      <td th:text="${members.id}"></td>
+      <td><img th:src="@{/img/shopImg/}+${members.img}" th:onclick="|location.href='@{/admin/supervisor/itemList/detail?member={id}(id=${members.id})}'|"></td>
+      <td th:text="${members.username}">가게명</td>
+      <td th:text="${members.regDate}">입점일자</td>
+      <td th:text="${members.location}">위치</td>
+      <td th:text="${members.role}">권한</td>
+
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

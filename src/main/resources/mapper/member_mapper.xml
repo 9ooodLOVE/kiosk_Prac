@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="korIT.kiosk.mapper.MemberMapper">
+
+    <insert id="insertMember" parameterType="korIT.kiosk.dto.MemberDTO" useGeneratedKeys="true" keyProperty="id">
+        insert into member (username, password, location, role, regDate, img) values(#{username}, #{password}, #{location}, #{role}, #{regDate}, #{img})
+    </insert>
+
+    <select id="findByMemberId" parameterType="_int" resultType="korIT.kiosk.dto.MemberDTO">
+        select * from member where id=#{id}
+    </select>
+
+    <select id="findByUsername" parameterType="String" resultType="korIT.kiosk.dto.MemberDTO">
+        select * from member where username=#{username}
+    </select>
+
+    <select id="findByRole" parameterType="String" resultType="korIT.kiosk.dto.MemberDTO">
+        select * from member where role=#{role}
+    </select>
+
+    <select id="findMembers" resultType="korIT.kiosk.dto.MemberDTO">
+        select * from member
+    </select>
+
+
+
+
+</mapper>
